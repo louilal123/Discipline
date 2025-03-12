@@ -1,0 +1,48 @@
+<!-- THIS FILE IS THE MAIN HTL FILE THAT GETS REUSED IN EVERY PAGES OF THE WEBSITE  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism Insights PH: Destination, Arrivals & Hotels - Home</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+ 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- logo here -->
+    <link rel="icon" href="{{ url_for('static', filename='images/trylogo-removebg-preview.png') }}" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Load Google Charts -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="../static/js/search.js"></script>
+
+
+    {% block extra_head %}{% endblock %}
+</head>
+
+
+<body>
+   
+
+    {% include 'navbar.html' %}
+
+   {% block content %}
+   
+   {% endblock %}
+
+    {% include 'footer.html' %}
+
+    {% block scripts %}
+   
+        
+    {% endblock %}
+    
+</body>
+
+</html>

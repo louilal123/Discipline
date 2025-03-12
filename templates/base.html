@@ -1,0 +1,53 @@
+<!-- THIS FILE IS THE MAIN HTL FILE THAT GETS REUSED IN EVERY PAGES OF THE WEBSITE  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DisciplineEstimate</title>
+  
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/bbb.jpg') }}" type="image/png">
+    {% block extra_head %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% endblock %}
+    
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+   <script src="../static/js/search.js"></script>
+
+</head>
+
+
+<body>
+
+    {% include 'navbar.html' %}
+
+   {% block content %}
+   
+   {% endblock %}
+
+    {% include 'footer.html' %}
+
+    {% block scripts %}
+    <script src="../static/js/search.js"></script>
+        <script>
+            // Mobile menu toggle
+            document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+              const mainNav = document.querySelector('.main-nav');
+              if (mainNav.style.display === 'flex') {
+                mainNav.style.display = 'none';
+              } else {
+                mainNav.style.display = 'flex';
+                mainNav.style.flexDirection = 'column';
+                mainNav.style.width = '100%';
+                mainNav.style.padding = '1rem 0';
+              }
+
+        
+          
+            });</script>
+    {% endblock %}
+    
+</body>
+
+</html>

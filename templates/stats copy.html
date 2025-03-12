@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="stats">
+    <h2>Our Statistics</h2>
+
+    <!-- Filter Section -->
+    <div class="filter-container">
+        <label for="dataFilter">Filter by:</label>
+        <select id="dataFilter">
+            <option value="all">All Data</option>
+            <option value="revenue">Revenue Only</option>
+            <option value="sales">Sales Only</option>
+            <option value="users">Active Users Only</option>
+        </select>
+    </div>
+
+    <div class="stats-grid">
+        <!-- First Bar Chart -->
+        <div class="chart-container">
+            <canvas id="myBarChart1"></canvas>
+            <p>
+                <!-- templates\data\discipline_data.csv -->
+                Number and percentage of public school students disciplined for engaging in harassment or bullying on the basis of race, color or national origin, by race/ethnicity, disability status, and English proficiency, by state: School Year 2011-12																							
+															
+ 
+            </p>
+        </div>
+
+        <!-- Pie Chart (Center) -->
+        <div class="chart-container">
+            <canvas id="myPieChart"></canvas>
+            <p>
+                <!-- templates\data\harasment-bullying.csv																 --> -->
+                Number and percentage of public school students reported to have been harassed or bullied on the basis of sex, by race/ethnicity, disability status, and English proficiency, by state: School Year 2015-16																			
+
+            </p>
+        </div>
+
+        <!-- Second Bar Chart -->
+        <div class="chart-container">
+            <canvas id="myBarChart2"></canvas>
+            <p>
+                <!-- templates\data\physicalrestraint.csv -->
+                Number and percentage of public school students with and without disabilities subjected to physical restraint, by race/ethnicity, whether with disabilities served under IDEA or Section 504, and English proficiency, by state: School Year 2011-12																							
+																								
+
+                 </p>
+        </div>
+    </div>
+</section>
+
+<script>
+    const filter = document.getElementById('dataFilter');
+
+    // Pie Chart
+    const ctxPie = document.getElementById('myPieChart').getContext('2d');
+    const pieChart = new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+            labels: ['Active Users', 'Projects Completed', 'Success Rate'],
+            datasets: [{
+                label: 'Statistics',
+                data: [500, 300, 100],
+                backgroundColor: ['#3a86ff', '#8338ec', '#ff006e'],
+                hoverOffset: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { position: 'bottom' } }
+        }
+    });
+
+    // First Bar Chart
+    const ctxBar1 = document.getElementById('myBarChart1').getContext('2d');
+    const barChart1 = new Chart(ctxBar1, {
+        type: 'bar',
+        data: {
+            labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+            datasets: [{
+                label: 'Revenue (in $1000s)',
+                data: [200, 450, 300, 600],
+                backgroundColor: ['#3a86ff', '#8338ec', '#ff006e', '#06d6a0'],
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: { y: { beginAtZero: true } },
+            plugins: { legend: { position: 'bottom' } }
+        }
+    });
+
+    // Second Bar Chart
+    const ctxBar2 = document.getElementById('myBarChart2').getContext('2d');
+    const barChart2 = new Chart(ctxBar2, {
+        type: 'bar',
+        data: {
+            labels: ['Product A', 'Product B', 'Product C', 'Product D'],
+            datasets: [{
+                label: 'Sales (in units)',
+                data: [300, 500, 400, 700],
+                backgroundColor: ['#ffbe0b', '#fb5607', '#ff006e', '#8338ec'],
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: { y: { beginAtZero: true } },
+            plugins: { legend: { position: 'bottom' } }
+        }
+    });
+
+    // Filter Logic
+    filter.addEventListener('change', () => {
+        const selectedValue = filter.value;
+
+        barChart1.canvas.parentNode.style.display = selectedValue === 'all' || selectedValue === 'revenue' ? 'block' : 'none';
+        barChart2.canvas.parentNode.style.display = selectedValue === 'all' || selectedValue === 'sales' ? 'block' : 'none';
+        pieChart.canvas.parentNode.style.display = selectedValue === 'all' || selectedValue === 'users' ? 'block' : 'none';
+    });
+</script>
+
+{% endblock %}

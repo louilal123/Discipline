@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="stats" style="padding: 50px !important;">
+    <h2>Our Statistics</h2>
+    <div class="filter-container">
+        <label for="dataFilter">Filter by:</label>
+        <select id="dataFilter">
+            <option value="all">All Data</option>
+            <option value="discipline">Discipline Cases Only</option>
+            <option value="schools">Schools per State Only</option>
+            <option value="disability">Disability Data Only</option>
+        </select>
+    </div>
+
+    <div class="stats-grid">
+        <!-- Bar Chart for Discipline Cases -->
+        <div class="chart-container" id="disciplineChartContainer">
+            <canvas id="myBarChart1"></canvas>
+          
+        </div>
+
+        <!-- Pie Chart for Number of Schools per State -->
+        <div class="chart-container large-chart" id="schoolsChartContainer">
+            <canvas id="myPieChart"></canvas>
+           
+        </div>
+    </div>
+</section>
+
+<section class="ass" style="padding-bottom: 100px !important;">
+    <!-- <h2>Students with Disabilities</h2> -->
+    <div class="stats-grid">
+        <!-- Pie Chart for Disability Data -->
+        <div class="chart-container large-chart" id="disabilityChartContainer">
+            <canvas id="disabilityPieChart" style="width: 500px; height: 1000px; margin: auto !important;"></canvas>
+        </div>
+    </div>
+</section>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Parse JSON data safely
+    const disciplineData = JSON.parse('{{ discipline_data | tojson | safe }}');
+    const schoolsData = JSON.parse('{{ schools_data | tojson | safe }}');
+    const disabilityData = JSON.parse('{{ disability_data | tojson | safe }}');
+
+    // Extract labels and values for schools per state
+    const schoolLabels = Object.keys(schoolsData);
+    const schoolValues = Object.values(schoolsData);
+
+    // Extract labels (race/ethnicity categories) and values (discipline case counts)
+    const labels = Object.keys(disciplineData);
+    const values = Object.values(disciplineData);
+
+    // Bar Chart for Discipline Cases
+    const ctxBar1 = document.getElementById('myBarChart1').getContext('2d');
+    const barChart1 = new Chart(ctxBar1, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Discipline Cases by Race/Ethnicity',
+                data: values,
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#C9CBCF'],
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, // Ensure it scales dynamically
+            scales: { 
+                y: { 
+                    beginAtZero: true 
+                } 
+            },
+            plugins: { 
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Discipline Cases by Race/Ethnicity',
+                    font: { size: 18 }
+                }
+            }
+        }
+    });
+
+    // Pie Chart for Schools by State
+    const ctxPie = document.getElementById('myPieChart').getContext('2d');
+    const pieChart = new Chart(ctxPie, {
+        type: 'bar',
+        data: {
+            labels: schoolLabels,
+            datasets: [{
+                data: schoolValues,
+                backgroundColor: [
+                    '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', 
+                    '#C9CBCF', '#FF9999', '#99FF99', '#9999FF', '#FFCC99', '#99CCFF'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+               maintainAspectRatio: false, // Ensure it scales dynamically
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Number of Schools Per State',
+                    font: { size: 18 }
+                }
+            }
+        }
+    });
+
+    // Pie Chart for Disability Data
+    const ctxDisability = document.getElementById('disabilityPieChart').getContext('2d');
+    const disabilityChart = new Chart(ctxDisability, {
+        type: 'pie',
+        data: {
+            labels: ['Under IDEA', 'Under Section 504', 'No Disability'],
+            datasets: [{
+                data: [
+                    disabilityData['IDEA'],
+                    disabilityData['Section 504'],
+                    disabilityData['No Disability']
+                ],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+            }]
+        },
+        options: {
+            responsive: true,
+               maintainAspectRatio: false, // Ensure it scales dynamically
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Students with Disabilities (IDEA & Section 504)',
+                    font: { size: 18 }
+                }
+            }
+        }
+    });
+
+    // Filter Logic
+    document.getElementById('dataFilter').addEventListener('change', function() {
+        const selectedValue = this.value;
+
+        document.getElementById('disciplineChartContainer').style.display = (selectedValue === 'all' || selectedValue === 'discipline') ? 'block' : 'none';
+        document.getElementById('schoolsChartContainer').style.display = (selectedValue === 'all' || selectedValue === 'schools') ? 'block' : 'none';
+        document.getElementById('disabilityChartContainer').style.display = (selectedValue === 'all' || selectedValue === 'disability') ? 'block' : 'none';
+    });
+</script>
+{% endblock %}
