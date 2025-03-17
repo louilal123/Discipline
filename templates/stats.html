@@ -79,6 +79,7 @@
             },
             plugins: { 
                 legend: { display: false },
+                display: false,
                 title: {
                     display: true,
                     text: 'Discipline Cases by Race/Ethnicity',
@@ -143,13 +144,20 @@
         }
     });
 
-    // Filter Logic
-    document.getElementById('dataFilter').addEventListener('change', function() {
-        const selectedValue = this.value;
+  // Filter Logic
+document.getElementById('dataFilter').addEventListener('change', function() {
+    const selectedValue = this.value;
 
-        document.getElementById('disciplineChartContainer').style.display = (selectedValue === 'all' || selectedValue === 'discipline') ? 'block' : 'none';
-        document.getElementById('schoolsChartContainer').style.display = (selectedValue === 'all' || selectedValue === 'schools') ? 'block' : 'none';
-        document.getElementById('disabilityChartContainer').style.display = (selectedValue === 'all' || selectedValue === 'disability') ? 'block' : 'none';
-    });
+    document.getElementById('disciplineChartContainer').style.display = (selectedValue === 'all' || selectedValue === 'discipline') ? 'block' : 'none';
+    document.getElementById('schoolsChartContainer').style.display = (selectedValue === 'all' || selectedValue === 'schools') ? 'block' : 'none';
+    document.getElementById('disabilityChartContainer').style.display = (selectedValue === 'all' || selectedValue === 'disability') ? 'block' : 'none';
+
+    // Force chart resize to fix padding issues
+    barChart1.resize();
+   
+    disabilityChart.resize();
+    pieChart.resize();
+});
+
 </script>
 {% endblock %}

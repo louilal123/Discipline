@@ -111,30 +111,34 @@
   /* Search Bar */
 
   /* Hero Section */
-  .hero {
-    background: url('/static/images/download.png') center/cover;
-    height: 90vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-  }
-  
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(26, 26, 46, 0.5));
-  }
+  /* Hero Section */
+.hero {
+  background: url('/static/images/download.png') center/cover fixed;
+  height: 90vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background-attachment: fixed; /* Enables parallax effect */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(26, 26, 46, 0.5));
+  z-index: 1; /* Ensures gradient overlay stays above background */
+}
+
   
   .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2; /* Ensures content stays above overlay */
     max-width: 800px;
     padding: 0 1.5rem;
   }
@@ -318,7 +322,8 @@
   
   /* Stats Section */.stats {
     text-align: center;
-    padding: 5rem 2rem;
+    padding: 10rem 4rem;
+
     background-color: var(--gray);
     height: auto;
 }
