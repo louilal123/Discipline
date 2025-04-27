@@ -6,7 +6,6 @@
     <title>Discipline Insights</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
-    <!-- .  -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -24,8 +23,8 @@
                         'darker': '#0a0f1c',
                     },
                     fontFamily: {
-                        'sans': ['Inter', 'sans-serif'],
-                        'display': ['Poppins', 'sans-serif'],
+                        'sans': ['Montserrat', 'sans-serif'],
+                        'display': ['Work Sans', 'sans-serif'],
                     },
                 }
             }
@@ -59,23 +58,23 @@
         }
         
         .custom-scrollbar::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    background: #1e293b;
-}
+            background: #f1f1f1;
+            background: #1e293b;
+        }
 
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #6366f1;
-    border-radius: 10px;
-}
-        .card {
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #6366f1;
+            border-radius: 10px;
+        }
+         .card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
+            
         .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
-}
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+        }
         
         .team-card {
             transition: all 0.3s ease;
@@ -247,6 +246,9 @@
                 <h2 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
                     Student Count by Disability Status 
                 </h2>
+
+                <!-- FIRST CHART BAR GRAPH ====================================================================
+                 =================================================================================================-->
                 <div class="relative h-[400px]">
                     <canvas id="statebarchart"></canvas>
                 </div>
@@ -256,6 +258,8 @@
                 <h2 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
                     Disciplinary actions among English Language Learners 
                 </h2>
+                    <!-- PIE/DOUGNUT CHART  GRAPH =====================================================================
+                     ==================================================================================================-->
                 <div class="relative h-[400px]">
                     <canvas id="ellDoughnutChart"></canvas>
                 </div>
@@ -286,7 +290,8 @@
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white">Disciplinary Actions by Categories and Gender</h3>
                     
                 </div>
-                
+                <!-- barchart MALE AND FEMALE 
+                   =================================================================================================- -->
                 <div class="h-96">
                     <canvas id="barchart"></canvas>
                 </div>
@@ -406,7 +411,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div>
                     <a href="#" class="flex items-center mb-4">
-                        <span class="text-2xl font-display font-bold gradient-text">D|E</span>
+                        <span class="text-2xl font-display font-bold gradient-text">D|I</span>
                         <span class="ml-3 text-lg font-medium text-white">Discipline Insights</span>
                     </a>
                     <p class="text-gray-400 mb-6">Transforming data into disciplined strategies for success.</p>
@@ -426,42 +431,9 @@
                     </div>
                 </div>
                 
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Solutions</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Analytics</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Data Management</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">AI Integration</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Forecasting</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Strategic Planning</a></li>
-                    </ul>
-                </div>
+              
                 
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Company</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">About Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Careers</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Blog</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Press</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Stay Updated</h4>
-                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates.</p>
-                    <form>
-                        <div class="flex">
-                            <input type="email" placeholder="Your email" class="bg-gray-800 border border-gray-700 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary w-full">
-                            <button type="submit" class="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-r-lg transition-colors duration-200">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </form>
-                </div>
+              
             </div>
             
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
@@ -541,14 +513,16 @@ function renderEllDoughnutChart(labels, dataPoints) {
     
     const backgroundColors = [
         'rgba(75, 192, 192, 0.7)',
-        'rgba(255, 159, 64, 0.7)',
-        'rgba(153, 102, 255, 0.7)'
+       
+        'rgba(153, 102, 255, 0.7)',
+        'rgba(255, 159, 64, 0.7)'
     ];
 
     const borderColors = [
         'rgba(75, 192, 192, 1)',
-        'rgba(255, 159, 64, 1)',
-        'rgba(153, 102, 255, 1)'
+        
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
     ];
 
     // Destroy existing chart if it exists
@@ -608,109 +582,109 @@ function renderEllDoughnutChart(labels, dataPoints) {
   <script>
     let groupedBarChart;
 
-document.addEventListener('DOMContentLoaded', function() {
-    initializeDropdowns();
-    setupEventListeners();
-    loadGroupedBarChart();  // Initialize the grouped bar chart
-});
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeDropdowns();
+        setupEventListeners();
+        loadGroupedBarChart();  // Initialize the grouped bar chart
+    });
 
-function loadGroupedBarChart() {
-    fetch(`/api/disability-data`)
-        .then(response => response.json())
-        .then(data => {
-            console.log("Received chart data:", data);  // 🪵 Debug log
-            renderGroupedBarChart(data);
-        })
-        .catch(error => {
-            console.error('Error loading grouped bar chart data:', error);
-        });
-}
-
-
-function renderGroupedBarChart(chartData) {
-    const ctx = document.getElementById('statebarchart').getContext('2d');
-
-    if (groupedBarChart) {
-        groupedBarChart.destroy();  // Destroy previous chart if it exists
+    function loadGroupedBarChart() {
+        fetch(`/api/disability-data`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Received chart data:", data);  // 🪵 Debug log
+                renderGroupedBarChart(data);
+            })
+            .catch(error => {
+                console.error('Error loading grouped bar chart data:', error);
+            });
     }
 
-    groupedBarChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: chartData.labels,
-            datasets: [
-                {
-                    label: 'Kentucky',
-                    data: chartData.kentucky_counts
 
-,
-                    backgroundColor: 'rgba(75, 192, 192, 0.7)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'North Dakota',
-                    data: chartData.northdakota_counts,
-                    backgroundColor: 'rgba(153, 102, 255, 0.7)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Alaska',
-                    data: chartData.alaska_counts,
-                    backgroundColor: 'rgba(255, 159, 64, 0.7)',
-                    borderColor: 'rgba(255, 159, 64, 1)',
-                    borderWidth: 1
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Number of Students'
+    function renderGroupedBarChart(chartData) {
+        const ctx = document.getElementById('statebarchart').getContext('2d');
+
+        if (groupedBarChart) {
+            groupedBarChart.destroy();  // Destroy previous chart if it exists
+        }
+
+        groupedBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: chartData.labels,
+                datasets: [
+                    {
+                        label: 'Kentucky',
+                        data: chartData.kentucky_counts
+
+    ,
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
                     },
-                    grid: {
-                        color: 'rgba(0, 0, 0, 0.1)'
-                    }
-                },
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Disability Status'
+                    {
+                        label: 'North Dakota',
+                        data: chartData.northdakota_counts,
+                        backgroundColor: 'rgba(153, 102, 255, 0.7)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 1
                     },
-                    grid: {
-                        display: false
+                    {
+                        label: 'Alaska',
+                        data: chartData.alaska_counts,
+                        backgroundColor: 'rgba(255, 159, 64, 0.7)',
+                        borderColor: 'rgba(255, 159, 64, 1)',
+                        borderWidth: 1
                     }
-                }
+                ]
             },
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'ALL DISCIPLINARY ACTIONS - Disability Status by State',
-                    font: {
-                        size: 16
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Students'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Disability Status'
+                        },
+                        grid: {
+                            display: false
+                        }
                     }
                 },
-                legend: {
-                    position: 'top',
-                    labels: {
-                        boxWidth: 12,
-                        padding: 20
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'ALL DISCIPLINARY ACTIONS - Disability Status by State',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            boxWidth: 12,
+                            padding: 20
+                        }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
                     }
-                },
-                tooltip: {
-                    mode: 'index',
-                    intersect: false
                 }
             }
-        }
-    });
-}
+        });
+    }
 
   </script>
  <SCript>
@@ -899,5 +873,92 @@ function getChartTitle() {
     return title;
 }
  </SCript>
+ 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+ <script>
+     // Wait for DOM and Three.js to be ready
+     document.addEventListener('DOMContentLoaded', function() {
+         initThreeBackground();
+     });
+ 
+     // Initialize Three.js background
+     function initThreeBackground() {
+         const container = document.getElementById('hero-canvas');
+         if (!container) return;
+         
+         // Ensure container has proper dimensions
+         container.style.position = 'absolute';
+         container.style.top = '0';
+         container.style.left = '0';
+         container.style.width = '100%';
+         container.style.height = '100%';
+         container.style.zIndex = '0';
+ 
+         const width = container.clientWidth;
+         const height = container.clientHeight;
+ 
+         // Check if Three.js is loaded
+         if (!THREE) {
+             console.error('Three.js not loaded');
+             return;
+         }
+ 
+         const scene = new THREE.Scene();
+         const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+         camera.position.z = 5;
+ 
+         const renderer = new THREE.WebGLRenderer({ 
+             alpha: true, 
+             antialias: true 
+         });
+         renderer.setSize(width, height);
+         renderer.setPixelRatio(window.devicePixelRatio);
+         container.appendChild(renderer.domElement);
+ 
+         // Create particles
+         const particlesGeometry = new THREE.BufferGeometry();
+         const particlesCount = 1500;
+         const posArray = new Float32Array(particlesCount * 3);
+ 
+         for (let i = 0; i < particlesCount * 3; i++) {
+             posArray[i] = (Math.random() - 0.5) * 15;
+         }
+ 
+         particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+ 
+         // Materials
+         const particlesMaterial = new THREE.PointsMaterial({
+             size: 0.02,
+             color: 0x6366f1,
+             transparent: true,
+             opacity: 0.8,
+             blending: THREE.AdditiveBlending
+         });
+ 
+         // Mesh
+         const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+         scene.add(particlesMesh);
+ 
+         // Animation
+         function animate() {
+             requestAnimationFrame(animate);
+             particlesMesh.rotation.x += 0.0005;
+             particlesMesh.rotation.y += 0.0005;
+             renderer.render(scene, camera);
+         }
+ 
+         animate();
+ 
+         // Handle window resize
+         window.addEventListener('resize', () => {
+             const newWidth = container.clientWidth;
+             const newHeight = container.clientHeight;
+             
+             camera.aspect = newWidth / newHeight;
+             camera.updateProjectionMatrix();
+             renderer.setSize(newWidth, newHeight);
+         });
+     }
+ </script>
 </body>
 </html>

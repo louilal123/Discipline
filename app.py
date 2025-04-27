@@ -17,7 +17,6 @@ def get_disciplines():
     try:
         all_data = pd.concat([kentucky_df, northdakota_df, alaska_df])
         disciplines = all_data['Discipline'].dropna().unique().tolist()
-        # Ensure unique and sorted
         disciplines = sorted(list(set(disciplines)))
         return jsonify({'disciplines': disciplines})
     except Exception as e:
